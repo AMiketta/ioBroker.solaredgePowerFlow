@@ -61,12 +61,9 @@ function checkStateCreationNeeded(stateName){
 }
 
 function checkStatesCreationNeeded(){
-    checkStateCreationNeeded('lastUpdateTime');
-    checkStateCreationNeeded('currentPower');
-    checkStateCreationNeeded('lifeTimeData');
-    checkStateCreationNeeded('lastYearData');
-    checkStateCreationNeeded('lastMonthData');
-    checkStateCreationNeeded('lastDayData');
+    checkStateCreationNeeded('currentGRID');
+    checkStateCreationNeeded('currentLOAD');
+    checkStateCreationNeeded('currentPV');
 }
 
 function main() {
@@ -81,7 +78,7 @@ function main() {
     if ((!siteid) || (!apikey)) {
         adapter.log.error("siteid or api key not set")
     } else {
-        var resource = "overview";
+        var resource = "currentPowerFlow";
 
         // for some other resources the url itself might change
         var url = "https://monitoringapi.solaredge.com/site/" + siteid + "/" + resource + ".json?api_key=" + apikey;
@@ -98,7 +95,7 @@ function main() {
 
                         var callback = function (val) {}
 
-                        var overview = content.overview;
+                        var siteCurrentPowerFlow = content.siteCurrentPowerFlow;
 
                         adapter.log.info("Current power for " + siteid + ": " + overview.currentPower.power + " W");
 
@@ -106,65 +103,34 @@ function main() {
                             adapter.log.debug("creating states");
                             // create all states, only needed on first start or after state deletion
 
-                            // last update time
-                            adapter.createState('', siteid, 'lastUpdateTime', {
-                                name: "lastUpdateTime",
-                                def: overview.lastUpdateTime,
-                                type: 'string',
-                                read: true,
-                                write: false,
-                                role: 'value',
-                                desc: 'Last update from inverter'
-                            }, callback);
-
-                            adapter.createState('', siteid, 'currentPower', {
-                                name: "currentPower",
-                                def: overview.currentPower.power,
+                            adapter.createState('', siteid, 'currentGRID', {
+                                name: "currentGRID",
+                                def: siteCurrentPowerFlow.GRID.currentPower,
                                 type: 'number',
                                 read: true,
                                 write: false,
                                 role: 'value',
-                                desc: 'current power in W'
+                                desc: 'current power from grid in KW'
                             }, callback);
 
-                            adapter.createState('', siteid, 'lifeTimeData', {
-                                name: "lifeTimeData",
-                                def: overview.lifeTimeData.energy,
+                            adapter.createState('', siteid, 'currentLOAD', {
+                                name: "currentLOAD",
+                                def: siteCurrentPowerFlow.LOAD.currentPower,
                                 type: 'number',
                                 read: true,
                                 write: false,
                                 role: 'value',
-                                desc: 'Lifetime energy in Wh'
+                                desc: 'current load in KW'
                             }, callback);
 
-                            adapter.createState('', siteid, 'lastYearData', {
-                                name: "lastYearData",
-                                def: overview.lastYearData.energy,
+                            adapter.createState('', siteid, 'currentPV', {
+                                name: "currentPV",
+                                def: siteCurrentPowerFlow.PV.currentPower,
                                 type: 'number',
                                 read: true,
                                 write: false,
                                 role: 'value',
-                                desc: 'last year energy in Wh'
-                            }, callback);
-
-                            adapter.createState('', siteid, 'lastMonthData', {
-                                name: "lastMonthData",
-                                def: overview.lastMonthData.energy,
-                                type: 'number',
-                                read: true,
-                                write: false,
-                                role: 'value',
-                                desc: 'last month energy in Wh'
-                            }, callback);
-
-                            adapter.createState('', siteid, 'lastDayData', {
-                                name: "lastDayData",
-                                def: overview.lastDayData.energy,
-                                type: 'number',
-                                read: true,
-                                write: false,
-                                role: 'value',
-                                desc: 'last day energy in Wh'
+                                desc: 'current PV power in KW'
                             }, callback);
 
                             createStates = false;
@@ -173,12 +139,10 @@ function main() {
                             // just update
                             adapter.log.debug("updating states");
 
-                            adapter.setStateChanged(siteid + '.lastUpdateTime', overview.lastUpdateTime, true);
-                            adapter.setStateChanged(siteid + '.currentPower', overview.currentPower.power, true);
-                            adapter.setStateChanged(siteid + '.lifeTimeData', overview.lifeTimeData.energy, true);
-                            adapter.setStateChanged(siteid + '.lastYearData', overview.lastYearData.energy, true);
-                            adapter.setStateChanged(siteid + '.lastMonthData', overview.lastMonthData.energy, true);
-                            adapter.setStateChanged(siteid + '.lastDayData', overview.lastDayData.energy, true);
+                          
+                            adapter.setStateChanged(siteid + '.currentGRID', siteCurrentPowerFlow.GRID.currentPower, true);
+                            adapter.setStateChanged(siteid + '.currentLOAD', siteCurrentPowerFlow.LOAD.currentPower, true);
+                            adapter.setStateChanged(siteid + '.currentPV', siteCurrentPowerFlow.PV.currentPower, true);
                         }
                     } else {
                         adapter.log.warn('Response has no valid content. Check your data and try again. ' + response.statusCode);
