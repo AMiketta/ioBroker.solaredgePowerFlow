@@ -28,16 +28,16 @@
         },
         "title": "Solaredge Monitoring Meter",
         "titleLang": {
-            "en": "Solaredge Monitoring",
-            "de": "Solaredge-Überwachung",
-            "ru": "Мониторинг Solaredge",
-            "pt": "Solaredge Monitoring",
-            "nl": "Solaredge Monitoring",
-            "fr": "Surveillance de Solaredge",
-            "it": "Monitoraggio di Solaredge",
-            "es": "Monitoreo Solaredge",
-            "pl": "Monitorowanie Solaredge",
-            "zh-cn": "Solaredge监控"
+            "en": "Solaredge Monitoring Meter",
+            "de": "Solaredge-Überwachung Meter",
+            "ru": "Мониторинг Solaredge Meter",
+            "pt": "Solaredge Monitoring Meter",
+            "nl": "Solaredge Monitoring Meter",
+            "fr": "Surveillance de Solaredge Meter",
+            "it": "Monitoraggio di Solaredge Meter",
+            "es": "Monitoreo Solaredg Metere",
+            "pl": "Monitorowanie Solaredge Meter",
+            "zh-cn": "Solaredge监控 Meter"
         },
         "desc": {
             "en": "Get data from solaredge monitoring portal",
