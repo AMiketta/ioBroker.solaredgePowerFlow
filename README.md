@@ -15,7 +15,7 @@
 ## solaredge adapter for ioBroker
 
 Get data from solaredge monitoring portal.
-Currently, only the /overview data point is used to get the current power and day/month/year/lifetime energy readings.
+Currently, only the /siteCurrentPowerFlow data point is used to get the current PV GRID and LOAD energy readings.
 
 You can also enable modbus on your solaredge device if it's a newer one and read the data directly. 
 
