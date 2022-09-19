@@ -49,7 +49,7 @@ function startAdapter(options) {
 
 function checkStateCreationNeeded(stateName){
     adapter.instance
-    adapter.getState('solaredge.' + adapter.instance + '.' + siteid + '.' + stateName, function (err, state) {
+    adapter.getState('solaredge_grid_meter.' + adapter.instance + '.' + siteid + '.' + stateName, function (err, state) {
         if (!state) {
             adapter.log.info("state "+stateName+" does not exist, will be created");
             createStates = true;
