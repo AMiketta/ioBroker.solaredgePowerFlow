@@ -98,7 +98,7 @@ function main() {
                         var siteCurrentPowerFlow = content.siteCurrentPowerFlow;
                         var direction = siteCurrentPowerFlow.connections[0].from;
                         
-                        var currentGrid = siteCurrentPowerFlow.GRID.currentPower:
+                        var currentGrid = siteCurrentPowerFlow.GRID.currentPower;
                         if (direction == "GRID") {
                           currentGrid = currentGrid * -1;      
                         }
