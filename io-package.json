@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "solaredgepowerflow",
-        "version": "0.2.2",
-        "news": {
+        "version": "0.2.3",
+        "news": {  
+            "0.2.2": {
+                "en": "bugfix"
+            },
              "0.2.2": {
                 "en": "use negativ grid value if power is importet."
             },
