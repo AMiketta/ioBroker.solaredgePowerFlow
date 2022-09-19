@@ -1,9 +1,12 @@
 {
     "common": {
         "name": "solaredgepowerflow",
-        "version": "0.2.3",
+        "version": "0.2.4",
         "news": {  
-            "0.2.2": {
+            "0.2.4": {
+                "en": "bugfix"
+            },
+            "0.2.3": {
                 "en": "bugfix"
             },
              "0.2.2": {
