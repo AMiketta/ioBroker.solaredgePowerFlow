@@ -28,7 +28,7 @@ let siteid;
 function startAdapter(options) {
     // Create the adapter and define its methods
     return adapter = utils.adapter(Object.assign({}, options, {
-        name: "solaredge_grid_meter",
+        name: "solaredgePowerFlow",
 
         // The ready callback is called when databases are connected and adapter received configuration.
         // start here!
@@ -49,7 +49,7 @@ function startAdapter(options) {
 
 function checkStateCreationNeeded(stateName){
     adapter.instance
-    adapter.getState('solaredge_grid_meter.' + adapter.instance + '.' + siteid + '.' + stateName, function (err, state) {
+    adapter.getState('solaredgePowerFlow.' + adapter.instance + '.' + siteid + '.' + stateName, function (err, state) {
         if (!state) {
             adapter.log.info("state "+stateName+" does not exist, will be created");
             createStates = true;
