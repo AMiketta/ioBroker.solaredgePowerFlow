@@ -1,6 +1,6 @@
 {
   "name": "iobroker.solaredgepowerflow",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Get data from solaredge monitoring portal",
   "author": {
     "name": "92lleo",
