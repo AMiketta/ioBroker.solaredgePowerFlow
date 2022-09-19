@@ -11,7 +11,7 @@
       "name": "92lleo"
     }
   ],
-  "homepage": "https://github.com/92lleo/ioBroker.solaredge",
+  "homepage": "https://github.com/AMiketta/ioBroker.solaredgePowerFlow",
   "license": "MIT",
   "keywords": [
     "solaredge",
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/92lleo/ioBroker.solaredge"
+    "url": "https://github.com/AMiketta/ioBroker.solaredgePowerFlow"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^2.4.0",
