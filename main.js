@@ -28,7 +28,7 @@ let siteid;
 function startAdapter(options) {
     // Create the adapter and define its methods
     return adapter = utils.adapter(Object.assign({}, options, {
-        name: "solaredge",
+        name: "solaredge_grid_meter",
 
         // The ready callback is called when databases are connected and adapter received configuration.
         // start here!
