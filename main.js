@@ -97,7 +97,7 @@ function main() {
 
                         var siteCurrentPowerFlow = content.siteCurrentPowerFlow;
 
-                        adapter.log.info("Current power for " + siteid + ": " + overview.currentPower.power + " W");
+                        adapter.log.info("Current power for " + siteid + ": " + siteCurrentPowerFlow.currentPower.power + " W");
 
                         if (createStates) {
                             adapter.log.debug("creating states");
