@@ -96,6 +96,12 @@ function main() {
                         var callback = function (val) {}
 
                         var siteCurrentPowerFlow = content.siteCurrentPowerFlow;
+                        var direction = siteCurrentPowerFlow.connections.from;
+                        
+                        var currentGrid = siteCurrentPowerFlow.GRID.currentPower:
+                        if (direction == "GRID") {
+                          currentGrid = currentGrid * -1;      
+                        }
 
                         adapter.log.info("Current PV power for " + siteid + ": " + siteCurrentPowerFlow.PV.currentPower + " KW");
 
@@ -105,7 +111,7 @@ function main() {
 
                             adapter.createState('', siteid, 'currentGRID', {
                                 name: "currentGRID",
-                                def: siteCurrentPowerFlow.GRID.currentPower,
+                                def: currentGrid,
                                 type: 'number',
                                 read: true,
                                 write: false,
@@ -140,7 +146,7 @@ function main() {
                             adapter.log.debug("updating states");
 
                           
-                            adapter.setStateChanged(siteid + '.currentGRID', siteCurrentPowerFlow.GRID.currentPower, true);
+                            adapter.setStateChanged(siteid + '.currentGRID', currentGrid, true);
                             adapter.setStateChanged(siteid + '.currentLOAD', siteCurrentPowerFlow.LOAD.currentPower, true);
                             adapter.setStateChanged(siteid + '.currentPV', siteCurrentPowerFlow.PV.currentPower, true);
                         }
